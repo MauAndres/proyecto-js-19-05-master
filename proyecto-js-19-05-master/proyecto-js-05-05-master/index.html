@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background: #fafafa;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        h2 {
+            text-align: center;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+        #average {
+            width: 450px;
+            margin: 0 auto 30px auto;
+            text-align: center;
+            background: #eaf6ff;
+            border: 2px solid #2196f3;
+            color: #1976d2;
+            font-size: 22px;
+            font-weight: bold;
+            border-radius: 6px;
+        }
+        #studentForm {
+            width: 400px;
+            margin: 0 auto 30px auto;
+            padding: 24px 30px 18px 30px;
+            border: 2px solid #2196f3;
+            border-radius: 10px;
+            background: #fff;
+            box-sizing: border-box;
+        }
+        #studentForm div {
+            margin-bottom: 16px;
+        }
+        #studentForm label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+        #studentForm input[type="text"],
+        #studentForm input[type="number"] {
+            width: 100%;
+            padding: 7px 10px;
+            border: 1px solid #bdbdbd;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        #studentForm button {
+            background: #1976d2;
+            color: #fff;
+            border: none;
+            padding: 10px 22px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        #studentForm button:hover {
+            background: #0d47a1;
+        }
+        #studentsTable {
+            margin: 30px auto 0 auto;
+            width: 80%;
+            border-collapse: collapse;
+            background: #fff;
+            overflow-x: auto; /* Puedes dejar esto si quieres scroll horizontal */
+            /* display: block;  <-- Elimina o comenta esta línea */
+        }
+        #studentsTable th, #studentsTable td {
+            border: 1px solid #bdbdbd;
+            padding: 10px 12px;
+            text-align: center;
+            font-size: 16px;
+        }
+        #studentsTable th {
+            background: #e3f2fd;
+            color: #1976d2;
+            font-size: 17px;
+        }
+        .delete {
+            background: #e53935;
+            color: #fff;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 4px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .delete:hover {
+            background: #b71c1c;
+        }
+        .edit-btn {
+            background: #ffa726;
+            color: #fff;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 4px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .edit-btn:hover {
+            background: #f57c00;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            #studentForm, #average {
+                width: 95%;
+                padding: 12px 5px 10px 5px;
+                font-size: 15px;
+            }
+            #studentsTable {
+                width: 100%;
+                font-size: 14px;
+            }
+            #studentsTable th, #studentsTable td {
+                padding: 6px 4px;
+                font-size: 13px;
+            }
+            h2 {
+                font-size: 20px;
+                margin-top: 20px;
+            }
+            button, .delete, .edit-btn {
+                font-size: 14px;
+                padding: 8px 10px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            #studentForm, #average {
+                font-size: 13px;
+            }
+            h2 {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h2>Notas Asignatura Front-End</h2>
+    <div id="average">Promedio General del Curso: N/A </div>
+    <form id="studentForm">
+        <div>
+            <label for="name">Nombre : </label>
+            <input type="text" id="name" required>
+        </div>
+        <div>
+            <label for="lastName">Apellido : </label>
+            <input type="text" id="lastName" required>
+        </div>
+        <div>
+            <label for="grade">Nota (1.0 - 7.0) : </label>
+            <input type="number" id="grade" step="0.1" min="1" max="7" required>
+        </div>
+        <button type="submit">Guardar Estudiante</button>
+    </form>
+    <div style="overflow-x:auto;">
+    <table id="studentsTable" border="1" cellspacing="0" cellpadding="8">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Nota</th>
+            <th>Acciones</th>
+            <th>Modificar</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!--Filas de datos-->
+    </tbody>
+</table>
+</div>
+    <script>
+    // Mensajes personalizados en español
+    document.getElementById('name').addEventListener('invalid', function(e) {
+        e.target.setCustomValidity('Por favor, complete el campo "Nombre".');
+    });
+    document.getElementById('name').addEventListener('input', function(e) {
+        e.target.setCustomValidity('');
+    });
+
+    document.getElementById('lastName').addEventListener('invalid', function(e) {
+        e.target.setCustomValidity('Por favor, complete el campo "Apellido".');
+    });
+    document.getElementById('lastName').addEventListener('input', function(e) {
+        e.target.setCustomValidity('');
+    });
+
+    document.getElementById('grade').addEventListener('invalid', function(e) {
+        if (e.target.value === '') {
+            e.target.setCustomValidity('Por favor, complete el campo "Nota".');
+        } else {
+            e.target.setCustomValidity('La nota debe estar entre 1.0 y 7.0.');
+        }
+    });
+    document.getElementById('grade').addEventListener('input', function(e) {
+        e.target.setCustomValidity('');
+    });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
