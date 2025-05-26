@@ -1,0 +1,165 @@
+body {
+    background: #fafafa;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+h2 {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+#average {
+    text-align: center;
+    color: #1976d2;
+    font-size: 22px;
+    font-weight: bold;
+    margin: 0; 
+    padding: 0; 
+    background: none; 
+    border: none;
+    border-radius: 0; 
+}
+#statsContainer {
+    width: 450px;
+    margin: 0 auto 30px auto;
+    text-align: center;
+    color: #1976d2;
+    font-size: 22px; 
+    font-weight: bold;
+    padding: 15px 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: #eaf6ff;
+    border: 2px solid #2196f3;
+    border-radius: 6px;
+}
+
+#statsContainer div {
+    margin: 0;
+    padding: 5px 0;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: inherit;
+}
+#studentForm {
+    width: 400px;
+    margin: 0 auto 30px auto;
+    padding: 24px 30px 18px 30px;
+    border: 2px solid #2196f3;
+    border-radius: 10px;
+    background: #fff;
+    box-sizing: border-box;
+}
+#studentForm div {
+    margin-bottom: 16px;
+}
+#studentForm label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+#studentForm input[type="text"],
+#studentForm input[type="number"] {
+    width: 100%;
+    padding: 7px 10px;
+    border: 1px solid #bdbdbd;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+#studentForm button {
+    background: #1976d2;
+    color: #fff;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+#studentForm button:hover {
+    background: #0d47a1;
+}
+#studentsTable {
+    margin: 30px auto 0 auto;
+    width: 80%;
+    border-collapse: collapse;
+    background: #fff;
+    overflow-x: auto; 
+}
+#studentsTable th, #studentsTable td {
+    border: 1px solid #bdbdbd;
+    padding: 10px 12px;
+    text-align: center;
+    font-size: 16px;
+}
+#studentsTable th {
+    background: #e3f2fd;
+    color: #1976d2;
+    font-size: 17px;
+}
+.delete {
+    background: #e53935;
+    color: #fff;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 4px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.delete:hover {
+    background: #b71c1c;
+}
+.edit-btn {
+    background: #ffa726;
+    color: #fff;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 4px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.edit-btn:hover {
+    background: #f57c00;
+}
+
+
+@media (max-width: 600px) {
+    #studentForm, #average {
+        width: 95%;
+        padding: 12px 5px 10px 5px;
+        font-size: 15px;
+    }
+    #studentsTable {
+        width: 100%;
+        font-size: 14px;
+    }
+    #studentsTable th, #studentsTable td {
+        padding: 6px 4px;
+        font-size: 13px;
+    }
+    h2 {
+        font-size: 20px;
+        margin-top: 20px;
+    }
+    button, .delete, .edit-btn {
+        font-size: 14px;
+        padding: 8px 10px;
+    }
+}
+
+@media (max-width: 400px) {
+    #studentForm, #average {
+        font-size: 13px;
+    }
+    h2 {
+        font-size: 16px;
+    }
+}
